@@ -31,9 +31,22 @@
             </div>
         </div>
     </div>
+
+    <div class="container text-center">
+        <h1>📷 Webcam Zugriff</h1>
+        <button id="start-camera" class="btn btn-primary">Kamera starten</button>
+        <button id="stop-camera" class="btn btn-danger" style="display: none;">Kamera stoppen</button>
+        <p id="error-message" class="text-danger mt-2"></p>
+
+        <!-- Kamera-Vorschau -->
+        <div id="camera-box" class="camera-container" style="display: none;">
+            <video id="video" autoplay></video>
+        </div>
+    </div>
+
     <script type="models" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="models" src="./Bootstrap/bootstrap-3.4.1-dist/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
-    <script type="models" src="./js/script.js"></script>
+    <script src="./js/script.js"></script>
     <script type="models" src="face-api.js"></script>
     <script type="models" src="./models_script.js"></script>
 </body>
