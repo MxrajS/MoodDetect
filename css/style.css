@@ -10,6 +10,8 @@
     text-align: center;
 }
 video {
+    transform: scaleX(-1); /* Spiegelt das Video horizontal */
+    display: block;
     width: 100%;
     border-radius: 5px;
 }
