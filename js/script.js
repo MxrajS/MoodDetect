@@ -15,25 +15,42 @@ function startCamera() {
     const errorMessage = document.getElementById("error-message");
     const stopButton = document.getElementById("stop-camera");
     const startButton = document.getElementById("start-camera");
-    
+
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(function (stream) {
             videoStream = stream;
-            
-            // 🔥 NEU: Direkt den Stream an das Video-Element anhängen
             if ("srcObject" in videoElement) {
                 videoElement.srcObject = stream;
             } else {
-                videoElement.src = URL.createObjectURL(stream); // Fallback für ältere Browser
+                videoElement.src = URL.createObjectURL(stream); 
             }
 
-            videoElement.play(); // 🎥 WICHTIG: Video abspielen
+            videoElement.play();
             cameraBox.style.display = "block";
             stopButton.style.display = "inline-block";
-            startButton.style.display = "none"; 
+            startButton.style.display = "none";
             errorMessage.textContent = "";
         })
-        
+        .catch(function (err) {
+            console.error("Fehler beim Zugriff auf die Kamera:", err);
+            const errorMessage = document.getElementById("error-message");
+            errorMessage.textContent = "Keine Kamera gefunden oder Zugriff verweigert!";
+            Object.assign(errorMessage.style, {
+                color: "red",
+                fontWeight: "bold",
+                fontSize: "clamp(16px, 2vw, 24px)",
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                textAlign: "center",
+                background: "white",
+                padding: "15px",
+                display: "block",
+                maxWidth: "80%",
+            });
+        });
+
 }
 
 function stopCamera() {
@@ -48,6 +65,6 @@ function stopCamera() {
         videoElement.srcObject = null;
         cameraBox.style.display = "none";
         stopButton.style.display = "none";
-        startButton.style.display = "inline-block"; 
+        startButton.style.display = "inline-block";
     }
 }
