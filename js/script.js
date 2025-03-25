@@ -33,10 +33,7 @@ function startCamera() {
             startButton.style.display = "none"; 
             errorMessage.textContent = "";
         })
-        .catch(function (err) {
-            console.error("Fehler beim Zugriff auf die Kamera:", err);
-            errorMessage.textContent = "❌ Keine Kamera gefunden oder Zugriff verweigert!";
-        });
+        
 }
 
 function stopCamera() {
