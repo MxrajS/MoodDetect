@@ -1,9 +1,6 @@
 .camera-container {
     width: 640px;
     max-width: 100%;
-    margin: 20px auto;
-    padding: 15px;
-    border: 3px solid #007bff;
     border-radius: 10px;
     background: #f8f9fa;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -12,5 +9,27 @@
 video {
     display: block;
     width: 100%;
-    border: 10px solid black;
+}
+
+body{
+    background-color: white;
+}
+
+#CameraAndEmotion{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    height: 40%;
+    margin-top: 10%;
+    min-height: 200px;
+}
+
+#camera{
+    border: 2px solid gray;
+    width: 40%;
+}
+
+#emotion{
+    border: 2px solid gray;
+    width: 40%;
 }

@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start</title>
     <link rel="stylesheet" href="./Bootstrap/bootstrap-3.4.1-dist/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-
-
-
     <div class="container text-center">
         <h1>MoodDetect</h1>
         <button id="start-camera" class="btn btn-primary">Kamera starten</button>
         <button id="stop-camera" class="btn btn-danger" style="display: none;">Kamera stoppen</button>
         <p id="error-message" class="text-danger mt-2"></p>
 
-        <div id="camera-box" class="camera-container" style="display: none;">
-            <video id="video" autoplay></video>
+        
+    </div>
+    <div id="CameraAndEmotion" class="content">
+        <div id="camera" class="content">
+            <div id="camera-box" class="camera-container" style="display: none;">
+                <video id="video" autoplay></video>
+            </div>
+        </div>
+        <div id="emotion" class="content">
+
         </div>
     </div>
 

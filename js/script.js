@@ -49,6 +49,9 @@ function startCamera() {
                 display: "block",
                 maxWidth: "80%",
             });
+            document.querySelectorAll(".content").forEach(div => {
+                div.style.display = "none";
+            })
         });
 
 }
