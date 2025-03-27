@@ -1,3 +1,4 @@
+
 async function start() {
     // Modelle lokal laden
     await faceapi.nets.tinyFaceDetector.loadFromUri('models');
@@ -13,31 +14,36 @@ async function start() {
     video.addEventListener('play', async () => {
         const canvas = faceapi.createCanvasFromMedia(video);
         document.body.append(canvas);
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d'); // Kontext für Canvas
         const displaySize = { width: video.width, height: video.height };
         faceapi.matchDimensions(canvas, displaySize);
 
         setInterval(async () => {
-            const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
-                .withFaceExpressions();
-        
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.save();
-            ctx.translate(canvas.width, 0); 
-            ctx.scale(-1, 1); // Spiegelt das Bild
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            ctx.restore(); // Kontext zurücksetzen
-        
-            faceapi.draw.drawDetections(canvas, detections);
-            faceapi.draw.drawFaceExpressions(canvas, detections);
-        
-            if (detections.length > 0) {
-                console.log("Erkannte Emotionen:", detections[0].expressions);
-            }
+            const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceDescriptors();
+            // Zeichne die Erkennung (Rahmen um das Gesicht)
+            faceapi.draw.drawDetections(canvas, detections); // Zeichnet Rechtecke um Gesichter
+            faceapi.draw.drawFaceExpressions(canvas, detections); // Zeichnet Emotionen (optional)
+
+            const options = new faceapi.draw.DrawBoxOptions({
+                boxColor: 'red', // Rahmenfarbe
+                lineWidth: 3     // Rahmenbreite
+            });
+            faceapi.draw.drawDetections(canvas, detections, options);
         }, 500);
-        
     });
 }
 
 start();
+
+async function testFaceDetection() {
+    console.log("testFaceDetection gestartet...");
+    await faceapi.nets.tinyFaceDetector.loadFromUri('models');
+    const video = document.getElementById('video');
+
+    setInterval(async () => {
+        const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
+        console.log("Gesicht erkannt?", detections.length > 0 ? "JA" : "NEIN", detections);
+    }, 1000);
+}
+
+testFaceDetection();

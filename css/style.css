@@ -10,6 +10,7 @@
 video {
     display: block;
     width: 100%;
+    transform: scaleX(-1);
 }
 
 html,

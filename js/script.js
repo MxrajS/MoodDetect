@@ -1,6 +1,4 @@
 let videoStream = null;
-navigator.mediaDevices.enumerateDevices().then(devices => console.log(devices));
-
 document.getElementById("start-camera").addEventListener("click", function () {
     startCamera();
 });
