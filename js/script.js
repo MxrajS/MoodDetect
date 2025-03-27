@@ -22,7 +22,7 @@ function startCamera() {
             if ("srcObject" in videoElement) {
                 videoElement.srcObject = stream;
             } else {
-                videoElement.src = URL.createObjectURL(stream); 
+                videoElement.src = URL.createObjectURL(stream);
             }
 
             videoElement.play();
@@ -44,7 +44,7 @@ function startCamera() {
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 textAlign: "center",
-                background: "white",
+                background: "transparent",
                 padding: "15px",
                 display: "block",
                 maxWidth: "80%",
@@ -55,6 +55,11 @@ function startCamera() {
         });
 
 }
+
+document.getElementById("start-camera").addEventListener("click", function () {
+    document.getElementById("intro-text").style.display = "none"; // Intro-Text ausblenden
+    document.getElementById("CameraAndEmotion").style.display = "flex"; // Divs einblenden
+});
 
 function stopCamera() {
     const videoElement = document.getElementById("video");
