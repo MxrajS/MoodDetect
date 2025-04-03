@@ -74,3 +74,29 @@ function stopCamera() {
         startButton.style.display = "inline-block";
     }
 }
+
+if (typeof faceapi === "undefined") {
+    console.error("face-api.js wurde nicht geladen! Prüfe den Pfad oder lade die Datei korrekt ein.");
+} else {
+    console.log("face-api.js erfolgreich geladen.");
+}
+
+
+async function detectEmotions() {
+    if (!videoStream) return;
+
+    const videoElement = document.getElementById("video");
+    const detections = await faceapi.detectAllFaces(videoElement, new faceapi.TinyFaceDetectorOptions())
+        .withFaceLandmarks()
+        .withFaceExpressions();
+
+    if (detections.length > 0) {
+        console.log("Erkannte Emotionen:", detections[0].expressions);
+    } else {
+        console.log("Kein Gesicht erkannt.");
+    }
+}
+
+// Emotionen alle 500ms auslesen
+setInterval(detectEmotions, 500);
+
