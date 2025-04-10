@@ -8,7 +8,8 @@ async function loadModels() {
     await Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri('models'),
         faceapi.nets.faceExpressionNet.loadFromUri('models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('models')
+        faceapi.nets.faceLandmark68Net.loadFromUri('models'),
+        faceapi.nets.ageGenderNet.loadFromUri('models') // <-- HINZUGEFÜGT
     ]);
     console.log("Modelle erfolgreich geladen!");
 }
@@ -25,7 +26,7 @@ async function start() {
         })
         .catch(err => console.error("Fehler beim Zugriff auf die Kamera:", err));
 
-    video.addEventListener('play', async () => {
+    video.addEventListener('loadeddata', async () => {
         const canvas = faceapi.createCanvasFromMedia(video);
         document.body.append(canvas);
         const ctx = canvas.getContext('2d');
@@ -36,17 +37,27 @@ async function start() {
         setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
                 .withFaceLandmarks()
-                .withFaceExpressions();
-
+                .withFaceExpressions()
+                .withAgeAndGender(); // <-- HINZUGEFÜGT, um Alter und Geschlecht zu erkennen
+        
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             faceapi.matchDimensions(canvas, displaySize);
-            faceapi.draw.drawDetections(canvas, detections);
-            faceapi.draw.drawFaceExpressions(canvas, detections);
-
-            if (detections.length > 0) {
-                detections.forEach(d => console.log("Erkannte Emotionen:", d.expressions));
-            }
-        }, 500);
+            // faceapi.draw.drawDetections(canvas, detections);
+            // faceapi.draw.drawFaceExpressions(canvas, detections);
+        
+            detections.forEach(d => {
+                console.log("Emotionen:", d.expressions);
+                console.log("Alter (geschätzt):", d.age.toFixed(0));
+                console.log("Geschlecht:", d.gender);
+            
+                // const box = d.detection.box;
+                // const drawBox = new faceapi.draw.DrawBox(box, {
+                //     label: `Alter: ${d.age.toFixed(0)}, Geschlecht: ${d.gender}`
+                // });
+                // drawBox.draw(canvas);
+            });
+            
+        }, 500);        
     });
 }
 
