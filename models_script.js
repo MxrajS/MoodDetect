@@ -26,7 +26,7 @@ async function start() {
         })
         .catch(err => console.error("Fehler beim Zugriff auf die Kamera:", err));
 
-    video.addEventListener('loadeddata', async () => {
+    video.addEventListener('play', async () => {
         const canvas = faceapi.createCanvasFromMedia(video);
         document.body.append(canvas);
         const ctx = canvas.getContext('2d');
@@ -47,14 +47,6 @@ async function start() {
         
             detections.forEach(d => {
                 console.log("Emotionen:", d.expressions);
-                console.log("Alter (geschätzt):", d.age.toFixed(0));
-                console.log("Geschlecht:", d.gender);
-            
-                // const box = d.detection.box;
-                // const drawBox = new faceapi.draw.DrawBox(box, {
-                //     label: `Alter: ${d.age.toFixed(0)}, Geschlecht: ${d.gender}`
-                // });
-                // drawBox.draw(canvas);
             });
             
         }, 500);        
