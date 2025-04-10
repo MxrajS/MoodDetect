@@ -26,7 +26,7 @@ async function start() {
         })
         .catch(err => console.error("Fehler beim Zugriff auf die Kamera:", err));
 
-    video.addEventListener('play', async () => {
+    video.addEventListener('loadeddata', async () => {
         const canvas = faceapi.createCanvasFromMedia(video);
         document.body.append(canvas);
         const ctx = canvas.getContext('2d');
