@@ -88,7 +88,8 @@ async function detectEmotions() {
     const videoElement = document.getElementById("video");
     const detections = await faceapi.detectAllFaces(videoElement, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
-        .withFaceExpressions();
+        .withFaceExpressions()
+        .withAgeAndGender();
 
     if (detections.length > 0) {
         console.log("Erkannte Emotionen:", detections[0].expressions);
