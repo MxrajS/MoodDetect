@@ -9,15 +9,16 @@ async function loadModels() {
         faceapi.nets.tinyFaceDetector.loadFromUri('models'),
         faceapi.nets.faceExpressionNet.loadFromUri('models'),
         faceapi.nets.faceLandmark68Net.loadFromUri('models'),
-        faceapi.nets.ageGenderNet.loadFromUri('models') // <-- HINZUGEFÜGT
+        faceapi.nets.ageGenderNet.loadFromUri('models')
     ]);
     console.log("Modelle erfolgreich geladen!");
 }
 
 async function start() {
-    await loadModels(); // Warte, bis die Modelle vollständig geladen sind
+    await loadModels();
 
     const video = document.getElementById('video');
+    const infoDiv = document.getElementById("emotion");
 
     navigator.mediaDevices.getUserMedia({ video: {} })
         .then(stream => {
@@ -38,19 +39,29 @@ async function start() {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
                 .withFaceLandmarks()
                 .withFaceExpressions()
-                .withAgeAndGender(); // <-- HINZUGEFÜGT, um Alter und Geschlecht zu erkennen
-        
+                .withAgeAndGender();
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             faceapi.matchDimensions(canvas, displaySize);
-            // faceapi.draw.drawDetections(canvas, detections);
-            // faceapi.draw.drawFaceExpressions(canvas, detections);
-        
-            detections.forEach(d => {
-                console.log("Emotionen:", d.expressions);
-            });
-            
-        }, 500);        
+
+            if (detections.length > 0) {
+                const d = detections[0];
+                const age = d.age.toFixed(0);
+                const gender = d.gender;
+                const expressions = d.expressions;
+                const emotion = Object.keys(expressions).reduce((a, b) =>
+                    expressions[a] > expressions[b] ? a : b
+                );
+
+                infoDiv.innerHTML = `
+                    <strong>Alter:</strong> ${age}<br>
+                    <strong>Geschlecht:</strong> ${gender}<br>
+                    <strong>Emotion:</strong> ${emotion}
+                `;
+            } else {
+                infoDiv.innerText = "Kein Gesicht erkannt.";
+            }
+        }, 500);
     });
 }
-
 start();
