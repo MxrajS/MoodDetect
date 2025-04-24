@@ -1,0 +1,123 @@
+/* startpage.css */
+
+body {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    font-size: 18px;
+}
+
+#hamburger-menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    font-size: 32px;
+    color: #333;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 4rem;
+    color: #0d47a1;
+    margin-bottom: 20px;
+}
+
+.lead {
+    font-size: 1.75rem;
+    color: #064273;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+    border: none;
+}
+
+.card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #222;
+}
+
+.highlight-btn {
+    transition: all 0.3s ease-in-out;
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.highlight-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+#continue-btn {
+    display: block;
+    margin: 40px auto 0 auto;
+    font-size: 1.25rem;
+}
+
+#camera-box {
+    margin: 30px auto 0 auto;
+    border-radius: 16px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    display: none;
+}
+
+#video {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    transform: scaleX(-1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#privacy-hint {
+    background-color: #ffffff;
+    border: 2px solid #0d47a1;
+    color: #0d47a1;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    padding: 12px 24px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#privacy-hint:hover {
+    background-color: #0d47a1;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#error-message {
+    color: #ff0000;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.2rem;
+}
+
+.button-group > * {
+    margin-bottom: 15px;
+  }
+      
