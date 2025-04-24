@@ -81,5 +81,22 @@ body {
     box-shadow: none;
   }
 
+  #hamburger-menu {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+
   
   

@@ -2,79 +2,59 @@
 <html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoodDetect – Start</title>
-    <link rel="stylesheet" href="./Bootstrap/bootstrap-3.4.1-dist/bootstrap-3.4.1-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/startpage.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodDetect – Start</title>
+  <link rel="stylesheet" href="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/startpage.css">
 </head>
 
 <body>
-    <!-- Hamburger oben links -->
-    <button id="hamburger-menu" class="btn btn-link">
-        <span style="font-size: 24px;">☰</span>
-    </button>
+    <button id="hamburger-menu" class="btn position-absolute top-0 start-0 m-3 p-2" aria-label="Menü öffnen">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </button>
+      
 
-    <div class="container text-center mt-5">
+  <div class="container text-center mt-5">
+    <!-- Titel & Slogan -->
+    <h1>MoodDetect</h1>
+    <p class="lead">Klicke auf <strong>„Start“</strong>, um die Emotionserkennung zu starten.</p>
 
-        <!-- 1) Titel & Slogan -->
-        <h1>MoodDetect</h1>
-        <p class="lead">Entdecke deine Emotionen in Echtzeit – direkt über deine Kamera.</p>
+    <!-- Zustimmung & Datenschutz Hinweis -->
+    <div class="mt-5">
+      <h4>Bevor wir loslegen...</h4>
+      <p>
+        Damit MoodDetect deine Emotionen erkennen kann, benötigen wir kurz Zugriff auf deine Kamera.<br>
+        Keine Sorge – du hast jederzeit die volle Kontrolle: Du kannst die Erlaubnis jederzeit wieder entziehen und
+        die Kamera jederzeit blockieren.
+      </p>
 
-        <!-- 2) Haupttext -->
-        <div class="mt-4">
-            <h3>Wie fühlst du dich gerade?</h3>
-            <p>
-                MoodDetect erkennt deine Gesichtsausdrücke in Echtzeit und zeigt dir, welche Emotion du gerade
-                ausstrahlst – direkt über deine Kamera. Du brauchst nichts weiter zu tun, als dich selbst zu beobachten
-                und
-                verschiedene Mimiken auszuprobieren. Es ist unterhaltsam, intuitiv und ein bisschen magisch.<br><br>
-                Zusätzlich kann MoodDetect auch dein geschätztes Alter und Geschlecht erkennen – natürlich
-                ausschließlich lokal auf
-                deinem Gerät, ohne Speicherung oder Weitergabe deiner Daten.
-            </p>
-        </div>
-
-        <!-- 3) Zustimmung & Datenschutz Hinweis -->
-        <br>
-        <div class="mt-5">
-            <h4>Bevor wir loslegen...</h4>
-            <p>
-                Damit MoodDetect deine Emotionen erkennen kann, benötigen wir kurz Zugriff auf deine Kamera.<br>
-                Keine Sorge – du hast jederzeit die volle Kontrolle: Du kannst die Erlaubnis jederzeit wieder entziehen
-                und
-                die Kamera jederzeit blockieren.
-            </p>
-
-            <!-- Buttons grouped for spacing -->
-            <div class="button-group mt-4">
-                <button id="privacy-hint" class="btn btn-link highlight-btn mb-3">Datenschutz Hinweis</button>
-                <a href="faq.html" class="btn btn-info highlight-btn mb-3">Häufige Fragen (FAQ)</a>
-                <div>
-                    <button id="start-camera" class="btn btn-primary highlight-btn" style="display: none;">Kamera
-                        erlauben</button>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Kamera-Box mit Video (Raw Footage) -->
-        <div id="camera-box" class="camera-container mt-4" style="display: none;">
-            <video id="video" autoplay playsinline></video>
-        </div>
-
-        <!-- Fehlerausgabe -->
-        <p id="error-message" class="text-danger mt-3"></p>
+      <!-- Buttons grouped for spacing -->
+      <div class="d-flex flex-column align-items-center gap-3 mt-4">
+        <button id="privacy-hint" class="btn btn-outline-primary highlight-btn">Datenschutz Hinweis</button>
+        <a href="faq.html" class="btn btn-info highlight-btn">Häufige Fragen (FAQ)</a>
+        <button id="start-camera" class="btn btn-primary highlight-btn" style="display: none;">Kamera erlauben</button>
+      </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="./js/startpage.js"></script>
-    <script src="./Bootstrap/bootstrap-3.4.1-dist/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
-    <script src="./js/face-api.min.js"></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/models_script.js"></script>
+    <!-- Kamera-Box mit Video (Raw Footage) -->
+    <div id="camera-box" class="camera-container mt-5" style="display: none;">
+      <video id="video" autoplay playsinline></video>
+    </div>
 
+    <!-- Fehlerausgabe -->
+    <p id="error-message" class="text-danger mt-3"></p>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/startpage.js"></script>
+  <script src="./js/face-api.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/models_script.js"></script>
 </body>
 
 </html>

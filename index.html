@@ -2,46 +2,50 @@
 <html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start</title>
-    <link rel="stylesheet" href="./Bootstrap/bootstrap-3.4.1-dist/bootstrap-3.4.1-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start</title>
+  <link rel="stylesheet" href="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <div class="container text-center">
-        <h1>MoodDetect</h1>
-        <button id="start-camera" class="btn btn-primary">Kamera starten</button>
-        <button id="stop-camera" class="btn btn-danger" style="display: none;">Kamera stoppen</button>
-        <div id="intro-text">
-            <h2>Willkommen bei MoodDetect</h2>
-            <p>Klicke auf "Start", um die Emotionserkennung zu starten.</p>
-        </div>
-        <p id="error-message" class="text-danger mt-2"></p>
+  <!-- Hamburger-Menü oben links -->
+  <button id="hamburger-menu" class="btn position-absolute top-0 start-0 m-3 p-2" aria-label="Menü öffnen">
+    <div class="hamburger-line"></div>
+    <div class="hamburger-line"></div>
+    <div class="hamburger-line"></div>
+  </button>
 
+  <div class="container text-center">
+    <h1>MoodDetect</h1>
+    <button id="start-camera" class="btn btn-primary">Kamera starten</button>
+    <button id="stop-camera" class="btn btn-danger" style="display: none;">Kamera stoppen</button>
 
-    </div>
-    <div id="CameraAndEmotion" class="content">
-        <div id="camera" class="content">
-            <div id="camera-box" class="camera-container" style="display: none;">
-                <video id="video" autoplay playsinline></video>
-            </div>
-        </div>
-        <div id="emotion" class="content">
-
-        </div>
+    <div id="intro-text" class="mt-4">
+      <h2>Willkommen bei MoodDetect</h2>
+      <p>Klicke auf "Start", um die Emotionserkennung zu starten.</p>
     </div>
 
-    <script src="./Bootstrap/bootstrap-3.4.1-dist/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+    <p id="error-message" class="text-danger mt-2"></p>
+  </div>
 
-<!-- Face-API zuerst laden -->
-<script src="./js/face-api.min.js"></script>
+  <div id="CameraAndEmotion" class="content mt-5">
+    <div id="camera" class="content">
+      <div id="camera-box" class="camera-container" style="display: none;">
+        <video id="video" autoplay playsinline></video>
+      </div>
+    </div>
+    <div id="emotion" class="content"></div>
+  </div>
 
-<!-- Erst jetzt das Haupt-Skript -->
-<script src="./js/script.js"></script>
-<script src="./models_script.js"></script>
+  <!-- Bootstrap Bundle mit Popper -->
+  <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Face-API -->
+  <script src="./js/face-api.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./models_script.js"></script>
 </body>
 
 </html>
