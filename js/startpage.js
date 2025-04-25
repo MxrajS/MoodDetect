@@ -1,5 +1,5 @@
 // Hamburger-Menü Platzhalter
-document.getElementById("hamburger-menu").addEventListener("click", function () {
+document.getElementById("hamburger-toggle").addEventListener("click", function () {
     // hier kommt weiterer code hin
     console.log("Hamburger-Menü geklickt");
 });
@@ -60,6 +60,3 @@ function createContinueButton() {
     document.getElementById("camera-box").after(continueBtn);
 }
 
-document.getElementById("hamburger-toggle").addEventListener("click", function () {
-    document.getElementById("nav-overlay").classList.toggle("active");
-  });
