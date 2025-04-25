@@ -60,3 +60,6 @@ function createContinueButton() {
     document.getElementById("camera-box").after(continueBtn);
 }
 
+document.getElementById("hamburger-toggle").addEventListener("click", function () {
+    document.getElementById("nav-overlay").classList.toggle("active");
+  });
