@@ -1,12 +1,11 @@
-// Hamburger-Menü Platzhalter
+// Hamburger-Menü
 const hamburgerToggle = document.getElementById("hamburger-toggle");
 if (hamburgerToggle) {
     hamburgerToggle.addEventListener("click", function () {
-        console.log("Hamburger-Menü geklickt");
-        // Hier könntest du das Overlay ein-/ausblenden
         const navOverlay = document.getElementById("nav-overlay");
         if (navOverlay) {
             navOverlay.classList.toggle("active");
+            document.body.classList.toggle("nav-open");
         }
     });
 }

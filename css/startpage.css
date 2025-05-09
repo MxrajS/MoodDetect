@@ -6,15 +6,6 @@ body {
     font-size: 18px;
 }
 
-#hamburger-menu {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    font-size: 32px;
-    color: #333;
-}
-
 h1 {
     font-weight: 800;
     font-size: 4rem;
@@ -120,19 +111,5 @@ h1 {
     margin-bottom: 15px;
   }
     
-  #hamburger-menu {
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .hamburger-line {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
+ 
   
