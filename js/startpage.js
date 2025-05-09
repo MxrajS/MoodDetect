@@ -1,51 +1,67 @@
 // Hamburger-Menü Platzhalter
-document.getElementById("hamburger-toggle").addEventListener("click", function () {
-    // hier kommt weiterer code hin
-    console.log("Hamburger-Menü geklickt");
-});
+const hamburgerToggle = document.getElementById("hamburger-toggle");
+if (hamburgerToggle) {
+    hamburgerToggle.addEventListener("click", function () {
+        console.log("Hamburger-Menü geklickt");
+        // Hier könntest du das Overlay ein-/ausblenden
+        const navOverlay = document.getElementById("nav-overlay");
+        if (navOverlay) {
+            navOverlay.classList.toggle("active");
+        }
+    });
+}
 
 // Datenschutz Hinweis + Einverständnis-Logik
-document.getElementById("privacy-hint").addEventListener("click", function () {
-    const einverstanden = confirm(
-        "Damit MoodDetect deine Emotionen erkennen kann, benötigen wir Zugriff auf deine Kamera. \n\n" +
-        "Keine Sorge – es werden keinerlei Daten gespeichert oder übertragen. Alles bleibt lokal auf deinem Gerät. \n\n" +
-        "Bist du einverstanden?"
-    );
+const privacyHintBtn = document.getElementById("privacy-hint");
+if (privacyHintBtn) {
+    privacyHintBtn.addEventListener("click", function () {
+        const einverstanden = confirm(
+            "Damit MoodDetect deine Emotionen erkennen kann, benötigen wir Zugriff auf deine Kamera. \n\n" +
+            "Keine Sorge – es werden keinerlei Daten gespeichert oder übertragen. Alles bleibt lokal auf deinem Gerät. \n\n" +
+            "Bist du einverstanden?"
+        );
 
-    if (einverstanden) {
-        document.getElementById("start-camera").style.display = "inline-block";
-    }
-});
+        if (einverstanden) {
+            const startBtn = document.getElementById("start-camera");
+            if (startBtn) {
+                startBtn.style.display = "inline-block";
+            }
+        }
+    });
+}
 
 let videoStream = null;
 
-document.getElementById("start-camera").addEventListener("click", function () {
-    const videoElement = document.getElementById("video");
-    const cameraBox = document.getElementById("camera-box");
-    const errorMessage = document.getElementById("error-message");
+const startCameraBtn = document.getElementById("start-camera");
+if (startCameraBtn) {
+    startCameraBtn.addEventListener("click", function () {
+        const videoElement = document.getElementById("video");
+        const cameraBox = document.getElementById("camera-box");
+        const errorMessage = document.getElementById("error-message");
 
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function (stream) {
-            videoStream = stream;
-            videoElement.srcObject = stream;
-            videoElement.play();
+        if (!videoElement || !cameraBox || !errorMessage) return;
 
-            // Kamera-Box anzeigen
-            cameraBox.style.display = "block";
-            errorMessage.textContent = "";
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                videoStream = stream;
+                videoElement.srcObject = stream;
+                videoElement.play();
 
-            // „Weiter“-Button erzeugen
-            createContinueButton();
-        })
-        .catch(function (err) {
-            console.error("Fehler beim Zugriff auf die Kamera:", err);
-            errorMessage.textContent = "Keine Kamera gefunden oder Zugriff verweigert!";
-        });
-});
+                cameraBox.style.display = "block";
+                errorMessage.textContent = "";
+
+                createContinueButton();
+            })
+            .catch(function (err) {
+                console.error("Fehler beim Zugriff auf die Kamera:", err);
+                errorMessage.textContent = "Keine Kamera gefunden oder Zugriff verweigert!";
+            });
+    });
+}
 
 // Erstelle Weiter-Button zu index.html
 function createContinueButton() {
-    if (document.getElementById("continue-btn")) return; // bereits vorhanden
+    if (document.getElementById("continue-btn")) return;
 
     const continueBtn = document.createElement("button");
     continueBtn.id = "continue-btn";
@@ -56,7 +72,8 @@ function createContinueButton() {
         window.location.href = "index.html";
     });
 
-    // Füge ihn direkt NACH der Kamera-Box ein
-    document.getElementById("camera-box").after(continueBtn);
+    const cameraBox = document.getElementById("camera-box");
+    if (cameraBox) {
+        cameraBox.after(continueBtn);
+    }
 }
-
