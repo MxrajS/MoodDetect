@@ -19,11 +19,6 @@ let ageSamples = [];
 let ageFixed = false;
 let averageAge = null;
 
-// Hamburger-Menü
-document.getElementById("hamburger-toggle").addEventListener("click", () => {
-  document.getElementById("nav-overlay").classList.toggle("active");
-});
-
 // Kamera starten
 startBtn.addEventListener("click", () => {
   alert("Hinweis: Die Alters- und Emotionserkennung kann ungenau sein und unterliegt Schwankungen.");
@@ -126,7 +121,6 @@ async function detectEmotions() {
       expressions[a] > expressions[b] ? a : b
     );
 
-    // Alter nur sammeln, nicht sofort anzeigen
     if (!ageFixed) {
       ageSamples.push(detectedAge);
     } else {
@@ -160,3 +154,27 @@ async function loadModels() {
 }
 
 loadModels();
+
+// 🧩 Navbar nachladen + EventListener nachträglich setzen
+fetch("navbar.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+
+    const hamburger = document.getElementById("hamburger-toggle");
+    const overlay = document.getElementById("nav-overlay");
+
+    if (hamburger && overlay) {
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        overlay.classList.toggle("active");
+      });
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          hamburger.classList.remove("open");
+          overlay.classList.remove("active");
+        }
+      });
+    }
+  });

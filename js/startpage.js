@@ -47,13 +47,37 @@ if (startCameraBtn) {
                 videoElement.play();
 
                 cameraBox.style.display = "block";
+                videoElement.style.display = "block";
                 errorMessage.textContent = "";
 
                 createContinueButton();
             })
             .catch(function (err) {
                 console.error("Fehler beim Zugriff auf die Kamera:", err);
-                errorMessage.textContent = "Keine Kamera gefunden oder Zugriff verweigert!";
+
+                // Zeige Warnsymbol und Text im cameraBox
+                cameraBox.style.display = "block";
+                videoElement.style.display = "none";
+                cameraBox.innerHTML = `
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 30px;
+                        background-color: #fbeaea;
+                        border: 2px dashed #f5c6cb;
+                        border-radius: 12px;
+                        min-height: 220px;
+                        text-align: center;
+                    ">
+                        <img src="./images/warning.svg" alt="Warnsymbol" width="80" height="80" style="margin-bottom: 20px;">
+                        <p class="fs-5 fw-bold text-danger">Kamerazugriff verweigert</p>
+                        <p style="max-width: 320px;">Bitte erlaube den Zugriff im Browser oder überprüfe deine Kameraeinstellungen.</p>
+                    </div>
+                `;
+
+                errorMessage.textContent = ""; // kein separater Text nötig
             });
     });
 }
