@@ -155,3 +155,7 @@ body {
   .nav-links a:hover {
     color: #1976d2;
   }
+
+  #logo_page{
+    width: 250px;
+}

@@ -1,7 +1,6 @@
-
 body {
     background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Space Grotesk', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     font-size: 18px;
 }
@@ -107,9 +106,6 @@ h1 {
     font-size: 1.2rem;
 }
 
-.button-group > * {
+.button-group>* {
     margin-bottom: 15px;
-  }
-    
- 
-  
+}

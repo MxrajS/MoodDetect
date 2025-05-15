@@ -1,102 +1,107 @@
 /* faq.css */
 body {
-    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    font-size: 18px;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    color: #0d47a1;
-    margin-bottom: 20px;
-    font-weight: 800;
-  }
-  
-  h4 {
-    font-weight: 600;
-  }
-  
-  p.lead {
-    font-size: 2rem;
-    color: #064273;
-    margin-bottom: 40px;
-  }
-  
-  .panel-title a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.6rem;
-    padding: 22px 28px;
-    border-radius: 18px;
-    /*background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%); */
-    color: #0b2c60;
-    text-decoration: none;
-    font-weight: 700;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-    transition: all 0.35s ease-in-out;
-    letter-spacing: 0.5px;
-  }
-  
-  .panel-title a:hover {
-    background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-  
-  .panel-body {
-    background-color: rgb(255, 255, 255);
-    border-radius: 0 0 14px 14px;
-    padding: 20px 25px;
-    line-height: 1.6;
-    font-size: 1.25rem;
-    animation: fadeIn 0.3s ease;
-    border-top: 1px solid #ddd;
-  }
-  
-  .panel-collapse {
-    transition: height 0.4s ease;
-  }
-  
-  .arrow-icon {
-    transition: transform 0.4s ease;
-    font-size: 1.4rem;
-  }
-  
-  .panel-title a.collapsed .arrow-icon {
-    transform: rotate(180deg);
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .faq-card {
-    margin-bottom: 25px;
-    border: none;
-    border-radius: 14px;
-    overflow: hidden;
-    background: none;
-    box-shadow: none;
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #0d47a1;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+p.lead {
+  font-size: 2rem;
+  color: #064273;
+  margin-bottom: 40px;
+}
+
+.panel-title a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  padding: 22px 28px;
+  border-radius: 18px;
+  /*background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%); */
+  color: #0b2c60;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: all 0.35s ease-in-out;
+  letter-spacing: 0.5px;
+}
+
+.panel-title a:hover {
+  background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.panel-body {
+  background-color: rgb(255, 255, 255);
+  border-radius: 0 0 14px 14px;
+  padding: 20px 25px;
+  line-height: 1.6;
+  font-size: 1.25rem;
+  animation: fadeIn 0.3s ease;
+  border-top: 1px solid #ddd;
+}
+
+.panel-collapse {
+  transition: height 0.4s ease;
+}
+
+.arrow-icon {
+  transition: transform 0.4s ease;
+  font-size: 1.4rem;
+}
+
+.panel-title a.collapsed .arrow-icon {
+  transform: rotate(180deg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
-  #hamburger-menu {
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  to {
+    opacity: 1;
   }
-  
-  .hamburger-line {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-  
+}
 
-  
-  
+.faq-card {
+  margin-bottom: 25px;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  background: none;
+  box-shadow: none;
+}
+
+#hamburger-menu {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+#logo_page {
+  width: 250px;
+}

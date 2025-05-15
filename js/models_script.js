@@ -13,6 +13,15 @@ async function loadModels() {
     ]);
     console.log("Modelle erfolgreich geladen!");
 }
+const emojiMap = {
+    happy: "😄",
+    sad: "😢",
+    angry: "😠",
+    surprised: "😲",
+    neutral: "😐",
+    fearful: "😨",
+    disgusted: "🤢"
+};
 
 async function start() {
     await loadModels();
@@ -54,10 +63,10 @@ async function start() {
                 );
 
                 infoDiv.innerHTML = `
-                    <strong>Alter:</strong> ${age}<br>
-                    <strong>Geschlecht:</strong> ${gender}<br>
-                    <strong>Emotion:</strong> ${emotion}
-                `;
+    <strong>Alter:</strong> ${age}<br>
+    <strong>Geschlecht:</strong> ${gender}<br>
+    <strong>Emotion:</strong> ${emojiMap[emotion] || "❓"} (${emotion})
+`;
             } else {
                 infoDiv.innerText = "Kein Gesicht erkannt.";
             }
