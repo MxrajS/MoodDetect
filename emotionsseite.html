@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <title>Was sind Emotionen?</title>
   <link rel="stylesheet" href="./css/emotionen.css">
 </head>
+
 <body>
+  <div id="navbar"></div>
   <header>
     <h1>Was sind Emotionen?</h1>
     <p>Emotionen begleiten uns täglich – sie beeinflussen unser Verhalten und unsere Entscheidungen.</p>
@@ -41,5 +44,33 @@
   </main>
 
   <script src="./js/emotionen.js"></script>
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Hamburger-Menü aktivieren
+        const script = document.createElement("script");
+        script.textContent = `
+          const hamburger = document.getElementById("hamburger-toggle");
+          const overlay = document.getElementById("nav-overlay");
+
+          hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("open");
+            overlay.classList.toggle("active");
+          });
+
+          overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+              hamburger.classList.remove("open");
+              overlay.classList.remove("active");
+            }
+          });
+        `;
+        document.body.appendChild(script);
+      });
+  </script>
 </body>
+
 </html>

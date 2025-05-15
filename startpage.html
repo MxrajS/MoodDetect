@@ -8,30 +8,18 @@
   <link rel="stylesheet" href="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/startpage.css">
+  <link rel="stylesheet" href="./css/navbar.css">
 </head>
 
 <body>
-<button id="hamburger-toggle" class="btn position-absolute top-0 start-0 m-3 p-2" aria-label="Menü öffnen">
-  <div class="hamburger-line"></div>
-  <div class="hamburger-line"></div>
-  <div class="hamburger-line"></div>
-</button>
 
-<div id="nav-overlay" class="nav-overlay">
-  <div class="nav-links">
-    <a href="startpage.html">Startseite</a>
-    <a href="index.html">Gesichtserkennung</a>
-    <a href="faq.html">FAQ</a>
-  </div>
-</div>
-      
+  <!-- 🧩 Navbar wird hier reingeladen -->
+  <div id="navbar"></div>
 
   <div class="container text-center mt-5">
-    <!-- Titel & Slogan -->
     <h1>MoodDetect</h1>
     <p class="lead">Klicke auf <strong>„Datenschutz Hinweis“</strong>, um die Emotionserkennung zu starten.</p>
 
-    <!-- Zustimmung & Datenschutz Hinweis -->
     <div class="mt-5">
       <h4>Bevor wir loslegen...</h4>
       <p>
@@ -40,7 +28,6 @@
         die Kamera jederzeit blockieren.
       </p>
 
-      <!-- Buttons grouped for spacing -->
       <div class="d-flex flex-column align-items-center gap-3 mt-4">
         <button id="privacy-hint" class="btn btn-outline-primary highlight-btn">Datenschutz Hinweis</button>
         <a href="faq.html" class="btn btn-info highlight-btn">Häufige Fragen (FAQ)</a>
@@ -48,20 +35,47 @@
       </div>
     </div>
 
-    <!-- Kamera-Box mit Video (Raw Footage) -->
     <div id="camera-box" class="camera-container mt-5" style="display: none;">
       <video id="video" autoplay playsinline></video>
     </div>
 
-    <!-- Fehlerausgabe -->
     <p id="error-message" class="text-danger mt-3"></p>
   </div>
 
-  <!-- Scripts -->
+  <!-- 📦 Scripts -->
   <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/startpage.js"></script>
   <script src="./js/face-api.min.js"></script>
   <script src="./js/script.js"></script>
-</body>
 
+  <!-- 🧩 Navbar nachladen -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Skript direkt nach dem Einfügen ausführen
+        const script = document.createElement("script");
+        script.textContent = `
+          const hamburger = document.getElementById("hamburger-toggle");
+          const overlay = document.getElementById("nav-overlay");
+
+          hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("open");
+            overlay.classList.toggle("active");
+          });
+
+          overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+              hamburger.classList.remove("open");
+              overlay.classList.remove("active");
+            }
+          });
+        `;
+        document.body.appendChild(script);
+      });
+  </script>
+
+</body>
 </html>

@@ -7,23 +7,13 @@
   <title>MoodDetect – Gesichtserkennung</title>
   <link rel="stylesheet" href="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/navbar.css" />
 </head>
 
 <body>
-  <!-- Hamburger-Menü -->
-  <button id="hamburger-toggle" class="btn position-absolute top-0 start-0 m-3 p-2" aria-label="Menü öffnen">
-    <div class="hamburger-line"></div>
-    <div class="hamburger-line"></div>
-    <div class="hamburger-line"></div>
-  </button>
 
-  <div id="nav-overlay" class="nav-overlay">
-    <div class="nav-links">
-      <a href="startpage.html">Startseite</a>
-      <a href="index.html">Gesichtserkennung</a>
-      <a href="faq.html">FAQ</a>
-    </div>
-  </div>
+  <!-- 🧩 Navbar wird hier reingeladen -->
+  <div id="navbar"></div> 
 
   <div class="container text-center mt-5">
     <h1 class="mb-3">MoodDetect</h1>
@@ -55,10 +45,40 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- 📦 Scripts -->
   <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/face-api.min.js"></script>
   <script src="./js/script.js"></script>
+
+  <!-- 🧩 Navbar nachladen -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Hamburger-Menü aktivieren
+        const script = document.createElement("script");
+        script.textContent = `
+          const hamburger = document.getElementById("hamburger-toggle");
+          const overlay = document.getElementById("nav-overlay");
+
+          hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("open");
+            overlay.classList.toggle("active");
+          });
+
+          overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+              hamburger.classList.remove("open");
+              overlay.classList.remove("active");
+            }
+          });
+        `;
+        document.body.appendChild(script);
+      });
+  </script>
+
 </body>
 
 </html>

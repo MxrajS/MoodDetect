@@ -16,12 +16,7 @@
     <p class="text-center lead mb-5">Du hast Fragen, wie das Ganze funktioniert? Hier findest du Antworten rund um
       Technik, Datenschutz und Anwendung von MoodDetect – kompakt, klar und verständlich.</p>
 
-    <!-- Hamburger-Menü oben links -->
-    <button id="hamburger-menu" class="btn position-absolute top-0 start-0 m-3 p-2" aria-label="Menü öffnen">
-      <div class="hamburger-line"></div>
-      <div class="hamburger-line"></div>
-      <div class="hamburger-line"></div>
-    </button>
+    <div id="navbar"></div>
 
     <div class="accordion" id="faqAccordion">
 
@@ -133,6 +128,35 @@
 
   <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/faq.js"></script>
+
+  <!-- 🧩 Navbar nachladen -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Hamburger-Menü aktivieren
+        const script = document.createElement("script");
+        script.textContent = `
+          const hamburger = document.getElementById("hamburger-toggle");
+          const overlay = document.getElementById("nav-overlay");
+
+          hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("open");
+            overlay.classList.toggle("active");
+          });
+
+          overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+              hamburger.classList.remove("open");
+              overlay.classList.remove("active");
+            }
+          });
+        `;
+        document.body.appendChild(script);
+      });
+  </script>
 </body>
 
 </html>
