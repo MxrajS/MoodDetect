@@ -2,75 +2,52 @@
 <html lang="de">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Was sind Emotionen?</title>
-  <link rel="stylesheet" href="./css/emotionen.css">
+  <link rel="stylesheet" href="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/emotionen.css" />
 </head>
 
 <body>
   <div id="navbar"></div>
-  <header>
-    <h1>Was sind Emotionen?</h1>
-    <p>Emotionen begleiten uns täglich – sie beeinflussen unser Verhalten und unsere Entscheidungen.</p>
-  </header>
 
-  <main>
+  <main class="container text-center py-5">
+    <h1 class="fw-bold mb-3">Was sind Emotionen?</h1>
+    <p class="fs-5 text-muted mb-5">
+      Emotionen begleiten uns täglich – sie beeinflussen unser Verhalten und unsere Entscheidungen.
+    </p>
+
     <section class="emotions-grid">
       <div class="emotion" data-info="Freude ist ein positives Gefühl und motiviert uns.">
-        😊
-        <span>Freude</span>
+        <div class="emoji">😊</div>
+        <div class="label">Freude</div>
       </div>
       <div class="emotion" data-info="Trauer hilft uns, Verluste zu verarbeiten.">
-        😢
-        <span>Trauer</span>
+        <div class="emoji">😢</div>
+        <div class="label">Trauer</div>
       </div>
       <div class="emotion" data-info="Wut signalisiert, dass uns etwas stört.">
-        😠
-        <span>Wut</span>
+        <div class="emoji">😠</div>
+        <div class="label">Wut</div>
       </div>
       <div class="emotion" data-info="Angst schützt uns vor Gefahren.">
-        😨
-        <span>Angst</span>
+        <div class="emoji">😨</div>
+        <div class="label">Angst</div>
       </div>
       <div class="emotion" data-info="Überraschung ist eine spontane Reaktion auf Unerwartetes.">
-        😲
-        <span>Überraschung</span>
+        <div class="emoji">😲</div>
+        <div class="label">Überraschung</div>
       </div>
     </section>
 
-    <section id="info-box">
-      <p>Bewege die Maus über ein Emoji, um mehr zu erfahren.</p>
+    <section id="info-box" class="mt-5">
+      <p class="info-text">Bewege die Maus über ein Emoji, um mehr zu erfahren.</p>
     </section>
   </main>
 
+  <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/emotionen.js"></script>
-  <script>
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
-
-        // Hamburger-Menü aktivieren
-        const script = document.createElement("script");
-        script.textContent = `
-          const hamburger = document.getElementById("hamburger-toggle");
-          const overlay = document.getElementById("nav-overlay");
-
-          hamburger.addEventListener("click", () => {
-            hamburger.classList.toggle("open");
-            overlay.classList.toggle("active");
-          });
-
-          overlay.addEventListener("click", (e) => {
-            if (e.target === overlay) {
-              hamburger.classList.remove("open");
-              overlay.classList.remove("active");
-            }
-          });
-        `;
-        document.body.appendChild(script);
-      });
-  </script>
 </body>
 
 </html>
