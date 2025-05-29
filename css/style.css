@@ -68,7 +68,6 @@ body {
 
 #start-camera,
 #stop-camera {
-    margin-top: 2%;
     transition: transform 0.3s ease;
 }
 
