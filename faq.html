@@ -1,176 +1,195 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MoodDetect – FAQ</title>
+
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+  <!-- Eigene Styles -->
   <link rel="stylesheet" href="./css/faq.css">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+  <link rel="stylesheet" href="./css/navbar.css">
 </head>
-
 <body>
-  <div class="container mt-5">
-    <div class="d-flex justify-content-center align-items-center">
-      <div>
-        <h1>
-          <a href="./startpage.html">
-            <img id="logo_page" src="./images/logo.png" alt="logo">
-          </a>
-        </h1>
-      </div>
+
+  <!-- Klick-Sound -->
+  <audio id="click-sound" src="./Sounds/click-151673.mp3" preload="auto"></audio>
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Hero-Section -->
+  <header class="faq-hero text-center text-white py-5 mb-5">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Häufige Fragen</h1>
+      <p class="lead">Hier findest du Antworten rund um Technik, Datenschutz und Anwendung von MoodDetect.</p>
     </div>
-    <h1 class="text-center mb-3">FAQ</h1>
-    <h4 class="text-center text-primary mb-2">Gefühle, Fragen, Antworten</h4>
-    <p class="text-center lead mb-5">Du hast Fragen, wie das Ganze funktioniert? Hier findest du Antworten rund um
-      Technik, Datenschutz und Anwendung von MoodDetect – kompakt, klar und verständlich.</p>
+  </header>
 
-    <div id="navbar"></div>
-
+  <!-- FAQ Accordion -->
+  <main class="container mb-5">
     <div class="accordion" id="faqAccordion">
 
-      <div class="accordion-item faq-card">
-        <h2 class="accordion-header" id="heading1">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1"
-            aria-expanded="false" aria-controls="collapse1">
-            Wie erkennt MoodDetect meine Emotionen?
+      <!-- 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer1"
+                  aria-expanded="false" aria-controls="answer1">
+            😊 Wie erkennt MoodDetect meine Emotionen?
           </button>
         </h2>
-        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1"
-          data-bs-parent="#faqAccordion">
+        <div id="answer1" class="accordion-collapse collapse"
+             aria-labelledby="faq1" data-bs-parent="#faqAccordion">
           <div class="accordion-body">
-            MoodDetect nutzt moderne KI-basierte Gesichtsanalyse, um in Echtzeit deine Mimik zu interpretieren. Dabei
-            erkennt das System, welche Muskelgruppen sich bewegen – z. B. Stirnrunzeln, Augenbrauenhebung oder
-            Mundwinkel – und ordnet sie bekannten Basisemotionen zu wie Freude, Wut oder Überraschung.
+            MoodDetect analysiert live dein Gesicht mit KI: Es wertet Augen, Mund & Co. aus und ordnet sie Basisemotionen wie Freude, Wut oder Überraschung zu.
           </div>
         </div>
       </div>
 
-      <div class="accordion-item faq-card">
-        <h2 class="accordion-header" id="heading2">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2"
-            aria-expanded="false" aria-controls="collapse2">
-            Erkennt MoodDetect noch mehr als Emotionen?
+      <!-- 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq2">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer2"
+                  aria-expanded="false" aria-controls="answer2">
+            🎂 Erkennt MoodDetect noch mehr als Emotionen?
           </button>
         </h2>
-        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
-          data-bs-parent="#faqAccordion">
+        <div id="answer2" class="accordion-collapse collapse"
+             aria-labelledby="faq2" data-bs-parent="#faqAccordion">
           <div class="accordion-body">
-            Ja! Zusätzlich zur Emotionserkennung kann MoodDetect auch eine Schätzung deines Alters und deines vermuteten
-            Geschlechts abgeben – ebenfalls rein über visuelle Merkmale im Gesicht. Diese Daten werden allerdings nicht
-            gespeichert oder weiterverarbeitet.
+            Ja! Zusätzlich schätzt es auch Alter und Geschlecht – alles lokal im Browser, ohne Speicherung.
           </div>
         </div>
       </div>
 
-      <div class="accordion-item faq-card">
-        <h2 class="accordion-header" id="heading3">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3"
-            aria-expanded="false" aria-controls="collapse3">
-            Wie steht es um meine Daten und meine Privatsphäre?
+      <!-- 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer3"
+                  aria-expanded="false" aria-controls="answer3">
+            🔐 Wie steht es um meine Privatsphäre?
           </button>
         </h2>
-        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3"
-          data-bs-parent="#faqAccordion">
+        <div id="answer3" class="accordion-collapse collapse"
+             aria-labelledby="faq3" data-bs-parent="#faqAccordion">
           <div class="accordion-body">
-            Deine Daten sind bei dir – und bleiben es auch. MoodDetect funktioniert komplett im Browser. Das heißt:
-            <ul>
-              <li>a) Keine Videos oder Bilder werden gespeichert.</li>
-              <li>b) Es gibt keine Cloud-Verarbeitung.</li>
-              <li>c) Nichts wird an Dritte weitergegeben. Alles läuft lokal und verschwindet, sobald du die Seite
-                verlässt.</li>
-            </ul>
+            Alles bleibt auf deinem Gerät. Keine Videos, keine Bilder, keine Cloud – MoodDetect läuft komplett offline.
           </div>
         </div>
       </div>
 
-      <div class="accordion-item faq-card">
-        <h2 class="accordion-header" id="heading4">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4"
-            aria-expanded="false" aria-controls="collapse4">
-            Was brauche ich, um MoodDetect zu nutzen?
+      <!-- 4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq4">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer4"
+                  aria-expanded="false" aria-controls="answer4">
+            📱 Funktioniert MoodDetect auch auf Mobilgeräten?
           </button>
         </h2>
-        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
-          data-bs-parent="#faqAccordion">
+        <div id="answer4" class="accordion-collapse collapse"
+             aria-labelledby="faq4" data-bs-parent="#faqAccordion">
           <div class="accordion-body">
-            Nur ein Gerät mit Kamera (Laptop, Tablet oder Smartphone). Die Anwendung läuft direkt im Browser – ohne
-            Download, ohne Installation.
+            Ja – die Seite ist responsiv und läuft in modernen Mobil-Browsern.
           </div>
         </div>
       </div>
 
-      <div class="accordion-item faq-card">
-        <h2 class="accordion-header" id="heading5">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5"
-            aria-expanded="false" aria-controls="collapse5">
-            Muss ich ernst bleiben oder darf ich Grimassen schneiden?
+      <!-- 5 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq5">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer5"
+                  aria-expanded="false" aria-controls="answer5">
+            ⚙️ Was brauche ich, um MoodDetect zu nutzen?
           </button>
         </h2>
-        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5"
-          data-bs-parent="#faqAccordion">
+        <div id="answer5" class="accordion-collapse collapse"
+             aria-labelledby="faq5" data-bs-parent="#faqAccordion">
           <div class="accordion-body">
-            Unbedingt Grimassen schneiden! MoodDetect lebt davon, dass du ausprobierst, welche Emotionen dein Gesicht
-            zeigt. Lächle, zieh die Augenbrauen hoch oder zeig Wut – und sieh, was dein Gesicht alles sagen kann.
+            Ein Gerät mit Kamera (Laptop, Tablet oder Smartphone). Kein Download, keine Installation.
           </div>
         </div>
       </div>
 
-      <div class="accordion-item faq-card">
-        <h2 class="accordion-header" id="heading6">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6"
-            aria-expanded="false" aria-controls="collapse6">
-            Weitere Fragen?
+      <!-- 6 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq6">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer6"
+                  aria-expanded="false" aria-controls="answer6">
+            🤪 Muss ich ernst bleiben?
           </button>
         </h2>
-        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6"
-          data-bs-parent="#faqAccordion">
+        <div id="answer6" class="accordion-collapse collapse"
+             aria-labelledby="faq6" data-bs-parent="#faqAccordion">
           <div class="accordion-body">
-            Wenn du weitere Fragen hast, zögere nicht und kontaktiere uns unter <a
-              href="mailto:soltani.m22@htlwienwest.at">soltani.m22@htlwienwest.at</a>.
+            Spaß ist erwünscht! Grimassen schneiden hilft, verschiedene Emotionen auszuprobieren.
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq7">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer7"
+                  aria-expanded="false" aria-controls="answer7">
+            🕒 Wie schnell ist die Erkennung?
+          </button>
+        </h2>
+        <div id="answer7" class="accordion-collapse collapse"
+             aria-labelledby="faq7" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Die Analyse läuft in der Regel in unter einer Sekunde pro Frame.
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq8">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer8"
+                  aria-expanded="false" aria-controls="answer8">
+            👯‍♀️ Mehrere Gesichter?
+          </button>
+        </h2>
+        <div id="answer8" class="accordion-collapse collapse"
+             aria-labelledby="faq8" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Es wird immer das dominant sichtbare Gesicht analysiert.
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq9">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#answer9"
+                  aria-expanded="false" aria-controls="answer9">
+            ❓ Weitere Fragen?
+          </button>
+        </h2>
+        <div id="answer9" class="accordion-collapse collapse"
+             aria-labelledby="faq9" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Schreib uns unter: <a href="mailto:soltani.m22@htlwienwest.at">soltani.m22@htlwienwest.at</a>
           </div>
         </div>
       </div>
 
     </div>
-  </div>
+  </main>
 
-  <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./js/faq.js"></script>
-
-  <!-- 🧩 Navbar nachladen -->
-  <script>
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
-
-        // Hamburger-Menü aktivieren
-        const script = document.createElement("script");
-        script.textContent = `
-          const hamburger = document.getElementById("hamburger-toggle");
-          const overlay = document.getElementById("nav-overlay");
-
-          hamburger.addEventListener("click", () => {
-            hamburger.classList.toggle("open");
-            overlay.classList.toggle("active");
-          });
-
-          overlay.addEventListener("click", (e) => {
-            if (e.target === overlay) {
-              hamburger.classList.remove("open");
-              overlay.classList.remove("active");
-            }
-          });
-        `;
-        document.body.appendChild(script);
-      });
-  </script>
+  <!-- Lokale Skripte -->
+  <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="./js/faq.js" defer></script>
+  <script src="./js/navbar.js" defer></script>
 </body>
-
 </html>

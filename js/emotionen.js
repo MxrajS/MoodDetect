@@ -1,35 +1,25 @@
+// Klick-Sound für alle Buttons/Links
+const clickSound = document.getElementById('click-sound');
+if (clickSound) {
+  clickSound.volume = 0.2;
+  document.querySelectorAll('button,a').forEach(el =>
+    el.addEventListener('click', () => {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    })
+  );
+}
+
+// Info-Box bei Hover
 const emotions = document.querySelectorAll('.emotion');
-const infoBox = document.getElementById('info-box').querySelector('p');
-
-emotions.forEach(emotion => {
-  emotion.addEventListener('mouseover', () => {
-    infoBox.textContent = emotion.dataset.info;
-  });
-
-  emotion.addEventListener('mouseout', () => {
-    infoBox.textContent = 'Bewege die Maus über ein Emoji, um mehr zu erfahren.';
-  });
-});
-
-fetch("navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar").innerHTML = data;
-
-    const hamburger = document.getElementById("hamburger-toggle");
-    const overlay = document.getElementById("nav-overlay");
-
-    if (hamburger && overlay) {
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("open");
-        overlay.classList.toggle("active");
-      });
-
-      overlay.addEventListener("click", (e) => {
-        if (e.target === overlay) {
-          hamburger.classList.remove("open");
-          overlay.classList.remove("active");
-        }
-      });
-    }
-  });
+const infoBox  = document.getElementById('info-box').querySelector('p');
+emotions.forEach(em =>
+  em.addEventListener('mouseover', () =>
+    infoBox.textContent = em.dataset.info
+  )
+);
+emotions.forEach(em =>
+  em.addEventListener('mouseout', () =>
+    infoBox.textContent = 'Bewege die Maus über ein Emoji, um mehr zu erfahren.'
+  )
+);

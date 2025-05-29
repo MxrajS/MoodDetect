@@ -1,59 +1,81 @@
+<!-- emotionsseite.html -->
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Was sind Emotionen?</title>
-  <link rel="stylesheet" href="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="./css/emotionen.css" />
-  <link rel="stylesheet" href="./css/navbar.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MoodDetect – Emotionen</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/css/bootstrap.min.css"/>
+  <!-- Eigene Styles -->
+  <link rel="stylesheet" href="./css/style.css"/>
+  <link rel="stylesheet" href="./css/emotionen.css"/>
+  <link rel="stylesheet" href="./css/navbar.css"/>
 </head>
-
 <body>
+
+  <!-- Klick-Sound -->
+  <audio id="click-sound" src="./Sounds/click-151673.mp3" preload="auto"></audio>
+
+  <!-- Navbar -->
   <div id="navbar"></div>
-  <main class="container text-center py-5">
-    <h1 class="fw-bold mb-3">Was sind Emotionen?</h1>
-    <p class="fs-5 text-muted mb-5">
-      Emotionen begleiten uns täglich – sie beeinflussen unser Verhalten und unsere Entscheidungen.
-    </p>
 
-    <section class="emotions-grid">
-      <div class="emotion" data-info="Freude ist ein positives Gefühl und motiviert uns.">
-        <img src="./images/Freude-Emoji.png" alt="Freude">
-        <span>Freude</span>
+  <!-- Hero-Card -->
+  <main class="container py-5">
+    <div class="card shadow-sm mb-5">
+      <div class="card-body text-center">
+        <img id="logo_page" src="./images/logo.png" alt="logo" style="max-width:150px;">
+        <h1 class="mt-3">Was sind Emotionen?</h1>
+        <p class="lead text-muted">
+          Emotionen begleiten uns täglich – sie beeinflussen unser Verhalten und unsere Entscheidungen.
+        </p>
       </div>
-      <div class="emotion" data-info="Trauer hilft uns, Verluste zu verarbeiten.">
-        <img src="./images/Trauer-Emoji.png" alt="Trauer">
-        <span>Trauer</span>
-      </div>
-      <div class="emotion" data-info="Wut signalisiert, dass uns etwas stört.">
-        <img src="./images/Wut-Emoji.png" alt="Wut">
-        <span>Wut</span>
-      </div>
-      <div class="emotion" data-info="Angst schützt uns vor Gefahren.">
-        <img src="./images/Angst-Emoji.png" alt="Angst">
-        <span>Angst</span>
-      </div>
-      <div class="emotion" data-info="Überraschung ist eine spontane Reaktion auf Unerwartetes.">
-        <img src="./images/Überraschung-Emoji.png" alt="Überraschung">
-        <span>Überraschung</span>
-      </div>
-    </section>
+    </div>
 
-    <section id="info-box" class="mt-5">
+    <!-- Emoji-Grid -->
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card emotion shadow-sm text-center p-3" data-info="Freude ist ein positives Gefühl und motiviert uns.">
+          <img src="./images/Freude-Emoji.png" alt="Freude" class="emoji-img mb-2"/>
+          <span class="label">Freude</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card emotion shadow-sm text-center p-3" data-info="Trauer hilft uns, Verluste zu verarbeiten.">
+          <img src="./images/Trauer-Emoji.png" alt="Trauer" class="emoji-img mb-2"/>
+          <span class="label">Trauer</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card emotion shadow-sm text-center p-3" data-info="Wut signalisiert, dass uns etwas stört.">
+          <img src="./images/Wut-Emoji.png" alt="Wut" class="emoji-img mb-2"/>
+          <span class="label">Wut</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card emotion shadow-sm text-center p-3" data-info="Angst schützt uns vor Gefahren.">
+          <img src="./images/Angst-Emoji.png" alt="Angst" class="emoji-img mb-2"/>
+          <span class="label">Angst</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card emotion shadow-sm text-center p-3" data-info="Überraschung ist eine spontane Reaktion auf Unerwartetes.">
+          <img src="./images/Überraschung-Emoji.png" alt="Überraschung" class="emoji-img mb-2"/>
+          <span class="label">Überraschung</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info-Box -->
+    <section id="info-box" class="text-center mt-5">
       <p class="info-text">Bewege die Maus über ein Emoji, um mehr zu erfahren.</p>
     </section>
   </main>
 
-  <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./js/emotionen.js"></script>
+  <!-- Lokale Skripte -->
+  <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="./js/emotionen.js" defer></script>
+  <script src="./js/navbar.js" defer></script>
 </body>
-
 </html>
