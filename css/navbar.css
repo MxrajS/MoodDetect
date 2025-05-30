@@ -36,13 +36,13 @@
   opacity: 1; visibility: visible; pointer-events: auto;
 }
 .nav-logo { margin-bottom: 2rem; }
-#logo { width: 100px; }
+#logo { width: 300px; }
 .nav-links {
   display:flex; flex-direction:column; gap:2rem;
   align-items:center; text-align:center;
 }
 .nav-links a {
-  color:white; font-size:2rem; font-weight:bold;
+  color:white; font-size:3rem; font-weight:bold;
   text-decoration:none; transition:color .2s ease;
 }
 .nav-links a:hover {color:#00bfff;}
