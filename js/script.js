@@ -84,7 +84,7 @@ function handleStableEmotion(emotion) {
     lastEmotion = emotion;
     emotionStart = Date.now();
     confettiFired = false;
-  } else if (emotion === 'happy' && !confettiFired && Date.now() - emotionStart >= 10000) {
+  } else if (emotion === 'happy' && !confettiFired && Date.now() - emotionStart >= 1000) {
     ['🎉','🎊','😊','🥳'].forEach(emoji => {
       const span = document.createElement('span');
       span.className = 'flying-emoji';
