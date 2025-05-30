@@ -88,3 +88,8 @@ p.lead {
     font-size: 0.95rem;
   }
 }
+
+#test{
+  display: flex;
+  justify-content: center;
+}
