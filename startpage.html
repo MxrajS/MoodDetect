@@ -11,7 +11,8 @@
   <!-- Eigene Styles -->
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/startpage.css">
-  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/navbar.css">         <!-- Für dein Hamburger-Menü -->
+  <link rel="stylesheet" href="./css/music-control.css">  <!-- Für Settings-Icon & Overlay -->
   <link rel="icon" type="image/x-icon" sizes="32x32" href="./images/Logo_icon.ico">
 </head>
 
@@ -26,7 +27,30 @@
     Dein Browser unterstützt kein Hintergrundvideo.
   </video>
 
-  <!-- Navbar -->
+  <!-- Musik (Sonata) – Autoplay -->
+  <audio
+    id="background-music"
+    src="./Musik/Sonata.mp3"
+    loop
+    autoplay
+    preload="auto">
+  </audio>
+
+  <!-- Settings-Icon rechts oben -->
+  <div id="settings-menu">
+    <img id="settings-icon" src="./images/setting_icon.png" alt="Einstellungen">
+  </div>
+
+  <!-- Overlay-Menü für Settings (initial ausgeblendet) -->
+  <div id="menu-overlay" class="hidden">
+    <div id="overlay-content">
+      <button id="toggle-music" class="btn">Musik pausieren</button>
+      <button id="toggle-video" class="btn">Video pausieren</button>
+      <button id="toggle-clicksound" class="btn">Klickton stumm</button>
+    </div>
+  </div>
+
+  <!-- Navbar (wird durch navbar.js aus navbar.html befüllt) -->
   <div id="navbar"></div>
 
   <!-- Hauptbereich -->
@@ -38,17 +62,19 @@
           <div class="card-body text-center">
             <h1>
               <a href="./startpage.html">
-                <img id="logo_page" src="./images/logo.png" alt="logo" style="max-width:200px" ;>
+                <img id="logo_page" src="./images/logo.png" alt="logo" style="max-width:200px">
               </a>
             </h1>
             <h1 class="mt-3">MoodDetect</h1>
             <p class="lead mb-4">
               Um Emotionen zu erkennen, benötigen wir kurz Zugriff auf deine Kamera.
-              Keine Sorge – alles bleibt lokal auf deinem Gerät.
+              Keine Sorge – alles bleibt lokal auf deinem Gerät. <br>
+              <br>
+              <small>Hinweis: Wenn du Musik hören willst, klicke oben rechts das Menü an und genieße Musik!</small>
             </p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
               <button id="privacy-hint" class="btn btn-outline-primary me-sm-2">
-                Datenschutz Hinweis
+                Datenschutzhinweis
               </button>
               <a href="faq.html" class="btn btn-info me-sm-2">FAQ</a>
               <button id="start-camera" class="btn btn-primary" style="display:none;">
@@ -75,8 +101,8 @@
 
   <!-- Scripts -->
   <script src="./Bootstrap/bootstrap-5.3.5-dist/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js" defer></script>
-  <script src="./js/startpage.js" defer></script>
-  <script src="./js/navbar.js" defer></script>
+  <script src="./js/navbar.js" defer></script>      <!-- Lädt dein Hamburger-Menü -->
+  <script src="./js/startpage.js" defer></script>   <!-- Ernsthafter Autoplay-Versuch & Rest-Logik -->
 </body>
 
 </html>
