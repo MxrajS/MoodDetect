@@ -42,7 +42,10 @@ video {
 #camera, #emotion {
   border: 2px solid gray; width: 40%;
 }
-#emotion { display: none; }
+#emotion {
+  transition: background-color 0.4s ease;
+}
+
 
 /* ========== ERROR MESSAGE ========== */
 #error-message {

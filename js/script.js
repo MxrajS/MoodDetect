@@ -22,6 +22,29 @@ const ageEl         = document.getElementById('age');
 const genderEl      = document.getElementById('gender');
 const mainEmotionEl = document.getElementById('main-emotion');
 
+// Übersetzungen
+const genderMap = { male: 'männlich', female: 'weiblich' };
+const emotionMap = {
+  happy: 'glücklich',
+  sad: 'traurig',
+  angry: 'wütend',
+  surprised: 'überrascht',
+  neutral: 'neutral',
+  fearful: 'ängstlich',
+  disgusted: 'angeekelt'
+};
+
+// Farben pro Emotion (für Box-Hintergrund)
+const emotionColorMap = {
+  glücklich: "#c8f7c5",     // hellgrün
+  traurig: "#cfe8ff",       // hellblau
+  wütend: "#ffd4d4",        // rosa
+  überrascht: "#fff6d1",    // gelblich
+  neutral: "#eeeeee",       // grau
+  ängstlich: "#ffe4cc",     // orange
+  angeekelt: "#e8ffd9"      // mintgrün
+};
+
 // Alters-Sampling
 let ageSamples = [], ageFixed = false, averageAge = null;
 function startAgeCollection() {
@@ -30,7 +53,7 @@ function startAgeCollection() {
   setTimeout(() => {
     if (ageSamples.length) {
       averageAge = Math.round(ageSamples.reduce((a,b)=>a+b,0)/ageSamples.length);
-      ageEl.textContent = averageAge;
+      ageEl.textContent = `${averageAge} Jahre`;
     } else {
       ageEl.textContent = '–';
     }
@@ -109,19 +132,29 @@ async function detectEmotions() {
 
   if (detections.length > 0) {
     const d = detections[0];
-    if (!ageFixed) ageSamples.push(Math.round(d.age));
-    else ageEl.textContent = averageAge;
 
-    genderEl.textContent = d.gender;
+    if (!ageFixed) ageSamples.push(Math.round(d.age));
+    else ageEl.textContent = `${averageAge} Jahre`;
+
+    genderEl.textContent = genderMap[d.gender] || d.gender;
+
     const main = Object.keys(d.expressions).reduce((a,b) =>
       d.expressions[a] > d.expressions[b] ? a : b
     );
-    mainEmotionEl.textContent = main;
+
+    const mappedEmotion = emotionMap[main] || main;
+    mainEmotionEl.textContent = mappedEmotion;
+
+    // Farbe der Box je nach Emotion setzen
+    const boxColor = emotionColorMap[mappedEmotion] || "#ffffff";
+    emotionBox.style.backgroundColor = boxColor;
+
     handleStableEmotion(main);
   } else {
     if (!ageFixed) ageEl.textContent = '…';
     genderEl.textContent      = '–';
     mainEmotionEl.textContent = 'Kein Gesicht erkannt';
+    emotionBox.style.backgroundColor = "#ffffff";
   }
 }
 
@@ -138,11 +171,9 @@ async function initialize() {
     faceapi.nets.ageGenderNet.loadFromUri('models')
   ]);
 
-  // Buttons binden
   startBtn.addEventListener('click', startCamera);
   stopBtn.addEventListener('click', stopCamera);
 
-  // Detection starten (wenn Kamera läuft)
   setInterval(detectEmotions, 500);
 }
 
